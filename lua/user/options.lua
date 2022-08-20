@@ -25,4 +25,5 @@ vim.opt.sidescrolloff = 8
 vim.opt.shortmess:append "c"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.termguicolors = true
 
