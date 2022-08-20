@@ -8,4 +8,5 @@ require "user.telescope"
 require "user.autopairs"
 require "user.comments"
 require "user.gitsigns"
+require "user.nvim-tree"
 
