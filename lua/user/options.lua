@@ -16,7 +16,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.number = true
 -- signcolumn is used for git, lsp stuff and others...
-vim.opt.signcolumn = "auto"
+vim.opt.signcolumn = "yes"
 vim.opt.wrap = false
 vim.opt.sidescroll = 4
 -- lines off top and bottom when scrolling
