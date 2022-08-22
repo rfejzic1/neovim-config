@@ -12,7 +12,7 @@ null_ls.setup {
   debug = false,
   sources = {
 		diagnostics.golangci_lint,
-		formatting.gofmt,
+		-- formatting.gofmt,
   },
 }
 
