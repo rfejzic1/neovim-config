@@ -51,6 +51,7 @@ return packer.startup(function(use)
 	-- use "lunarvim/colorschemes"
 	use { "EdenEast/nightfox.nvim", tag = "v1.0.0" }
 	use 'shaunsingh/nord.nvim'
+	use "ellisonleao/gruvbox.nvim"
 
 	-- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -74,6 +75,7 @@ return packer.startup(function(use)
 
 	-- Telescope
   use "nvim-telescope/telescope.nvim"
+	use 'nvim-telescope/telescope-project.nvim'
 
 	-- Treesitter
   use {
