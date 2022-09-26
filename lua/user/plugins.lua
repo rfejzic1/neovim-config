@@ -48,10 +48,18 @@ return packer.startup(function(use)
 	use "numToStr/Comment.nvim" -- Easily comment stuff
 
 	-- Colorschemes
-	-- use "lunarvim/colorschemes"
-	use { "EdenEast/nightfox.nvim", tag = "v1.0.0" }
-	use 'shaunsingh/nord.nvim'
+	use "lunarvim/colorschemes"
+	use "EdenEast/nightfox.nvim"
+	use "shaunsingh/nord.nvim"
+	use "ayu-theme/ayu-vim"
 	use "ellisonleao/gruvbox.nvim"
+	use "arzg/vim-substrata"
+	use "flrnd/plastic.vim"
+	use "huyvohcmc/atlas.vim"
+	use "lurst/austere.vim"
+	use "alessandroyorba/sierra"
+	use "olivercederborg/poimandres.nvim"
+	use "w0ng/vim-hybrid"
 
 	-- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
