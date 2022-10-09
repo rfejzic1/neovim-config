@@ -71,3 +71,7 @@ keymap("n", "<leader>p", "<cmd>lua require'telescope'.extensions.project.project
 -- Nvimtree
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
+-- Centerpad
+-- keymap('n', '<leader><leader>', "<cmd>lua require'centerpad'.toggle{ leftpad = 48, rightpad = 48 }<cr>", opts)
+keymap('n', '<leader><leader>', "<cmd>lua CenterMe()<cr>", opts)
+

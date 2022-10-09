@@ -9,4 +9,5 @@ require "user.autopairs"
 require "user.comments"
 require "user.gitsigns"
 require "user.nvim-tree"
+require "user.centerpad"
 
