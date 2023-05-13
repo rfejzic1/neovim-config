@@ -6,6 +6,15 @@ return {
 	-- Detect tabstop and shiftwidth automatically
 	'tpope/vim-sleuth',
 
+
+	{
+		'kyazdani42/nvim-tree.lua',
+		config = function()
+			require("user/nvim_tree").setup()
+		end,
+		dependencies = { 'kyazdani42/nvim-web-devicons' },
+	},
+
 	-- Terminal
 	{
 		'akinsho/toggleterm.nvim',

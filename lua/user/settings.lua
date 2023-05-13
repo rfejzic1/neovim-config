@@ -2,6 +2,10 @@ local function setup()
   -- [[ Setting options ]]
   -- See `:help vim.o`
 
+  -- Disable netrw
+  vim.g.loaded_netrw = 1
+  vim.g.loaded_netrwPlugin = 1
+
   -- Set highlight on search
   vim.o.hlsearch = false
 

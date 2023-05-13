@@ -68,8 +68,8 @@ local function setup()
   -- Diagnostic keymaps
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-  vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-  vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+  vim.keymap.set('n', 'gl', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
+  vim.keymap.set('n', 'gk', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 
   -- LSP settings.
   --  This function gets run when an LSP connects to a particular buffer.
@@ -182,7 +182,7 @@ local function setup()
         behavior = cmp.ConfirmBehavior.Replace,
         select = true,
       },
-      ['<Tab>'] = cmp.mapping(function(fallback)
+      ['<C-j>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
@@ -191,7 +191,7 @@ local function setup()
           fallback()
         end
       end, { 'i', 's' }),
-      ['<S-Tab>'] = cmp.mapping(function(fallback)
+      ['<C-k>'] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then

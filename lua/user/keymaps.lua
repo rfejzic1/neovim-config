@@ -65,6 +65,9 @@ local function setup()
   keymap('t', '<C-l>', [[<Cmd>wincmd l<CR>]], opts)
   keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 
+  -- Nvim-Tree
+  keymap("n", "<leader>E", ":NvimTreeToggle<cr>", opts)
+  keymap("n", "<leader>e", ":NvimTreeFocus<cr>", opts)
 
   -- Keymaps for better default experience
   -- See `:help vim.keymap.set()`
