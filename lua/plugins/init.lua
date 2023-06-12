@@ -25,9 +25,9 @@ return {
 			direction = 'vertical',
 			size = function(term)
 				if term.direction == 'horizontal' then
-				  return vim.o.lines * 0.4
+					return vim.o.lines * 0.4
 				elseif term.direction == 'vertical' then
-				  return vim.o.columns * 0.4
+					return vim.o.columns * 0.4
 				end
 			end
 		},
@@ -36,7 +36,7 @@ return {
 	-- Autopairs, integrates with both cmp and treesitter
 	{
 		'windwp/nvim-autopairs',
-		config = function ()
+		config = function()
 			require('nvim-autopairs').setup({
 				check_ts = true,
 				ts_config = {
@@ -91,11 +91,11 @@ return {
 	},
 
 	{
-		-- 'EdenEast/nightfox.nvim',
-		'shaunsingh/nord.nvim',
+		'jacoborus/tender.vim',
+		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme 'nord'
+			vim.cmd.colorscheme('tender')
 		end
 	},
 
