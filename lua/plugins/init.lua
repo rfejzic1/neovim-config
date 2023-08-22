@@ -134,6 +134,18 @@ return {
 	-- Fuzzy Finder (files, lsp, etc)
 	{ 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
 
+	{
+		'folke/todo-comments.nvim',
+		dependencies = { 'nvim-lua/plenary.nvim' },
+		opts = {
+			highlight = {
+				before = "",
+				keyword = "bg",
+				after = "",
+			},
+		},
+	},
+
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built.
 	-- Only load if `make` is available. Make sure you have the system
 	-- requirements installed.
