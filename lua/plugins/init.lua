@@ -91,6 +91,7 @@ return {
 				topdelete = { text = '‾' },
 				changedelete = { text = '~' },
 			},
+			on_attach = require('user/git')
 		},
 	},
 
