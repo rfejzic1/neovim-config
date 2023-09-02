@@ -39,6 +39,9 @@ local function setup()
   keymap("n", "<C-d>", "<C-d>zz", opts)
   keymap("n", "<C-u>", "<C-u>zz", opts)
 
+  -- Quick Macro
+  keymap("n", "Q", "@q", opts)
+
   -- Visual --
   -- Stay in indent mode
   keymap("v", "<", "<gv", opts)
