@@ -61,6 +61,7 @@ local function setup()
     },
     filters = {
       dotfiles = false,
+      git_ignored = false,
     },
     view = {
       width = 30,
