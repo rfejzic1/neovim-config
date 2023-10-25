@@ -91,7 +91,9 @@ local function setup()
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
     nmap('<leader>a', vim.lsp.buf.code_action, 'Code [A]ction')
     nmap('<leader>f', vim.lsp.buf.format, '[F]ormat Document')
-    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+
+    nmap('<leader><leader>', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+
     nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
     nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
