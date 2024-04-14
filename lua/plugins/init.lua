@@ -6,6 +6,19 @@ return {
 	-- Detect tabstop and shiftwidth automatically
 	'tpope/vim-sleuth',
 
+	{
+		'mfussenegger/nvim-dap'
+	},
+
+	{
+		'leoluz/nvim-dap-go',
+		dependencies = { 'mfussenegger/nvim-dap' }
+	},
+
+	{
+		'rcarriga/nvim-dap-ui',
+		dependencies = { 'mfussenegger/nvim-dap' }
+	},
 
 	{
 		'kyazdani42/nvim-tree.lua',
@@ -96,13 +109,16 @@ return {
 	},
 
 	{
-		'jacoborus/tender.vim',
+		-- 'jacoborus/tender.vim',
+		'rainglow/vim',
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme('tender')
+			-- vim.cmd.colorscheme('tender')
+			vim.cmd.colorscheme('service')
 		end
 	},
+
 
 	{
 		-- Set lualine as statusline

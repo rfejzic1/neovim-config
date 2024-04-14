@@ -10,7 +10,8 @@ local function setup()
   vim.o.hlsearch = false
 
   -- Make line numbers default
-  vim.wo.relativenumber = true
+  vim.opt.number = true
+  vim.opt.relativenumber = true
 
   vim.wo.wrap = false
 
