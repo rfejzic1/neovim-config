@@ -133,6 +133,9 @@ local function setup()
         telemetry = { enable = false },
       },
     },
+    ols = {
+      cmd = "ols",
+    },
   }
 
   -- Setup neovim lua configuration

@@ -20,12 +20,20 @@ return {
 		dependencies = { 'mfussenegger/nvim-dap' }
 	},
 
+	-- {
+	-- 	'kyazdani42/nvim-tree.lua',
+	-- 	config = function()
+	-- 		require("user/nvim_tree").setup()
+	-- 	end,
+	-- 	dependencies = { 'kyazdani42/nvim-web-devicons' },
+	-- },
 	{
-		'kyazdani42/nvim-tree.lua',
-		config = function()
-			require("user/nvim_tree").setup()
-		end,
-		dependencies = { 'kyazdani42/nvim-web-devicons' },
+		'stevearc/oil.nvim',
+		opts = {
+			default_file_explorer = true,
+			keymaps = {},
+		},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
 	-- Terminal
@@ -137,11 +145,18 @@ return {
 	{
 		-- Add indentation guides even on blank lines
 		'lukas-reineke/indent-blankline.nvim',
+		main = "ibl",
 		-- Enable `lukas-reineke/indent-blankline.nvim`
 		-- See `:help indent_blankline.txt`
 		opts = {
-			char = '┊',
-			show_trailing_blankline_indent = false,
+			indent = {
+				char = '┊',
+				highlight = { "Function" },
+			},
+			whitespace = {
+				highlight = { "Function" },
+				remove_blankline_trail = false,
+			},
 		},
 	},
 

@@ -69,8 +69,11 @@ local function setup()
   keymap('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 
   -- Nvim-Tree
-  keymap("n", "<leader>E", ":NvimTreeToggle<cr>", opts)
-  keymap("n", "<leader>e", ":NvimTreeFocus<cr>", opts)
+  -- keymap("n", "<leader>E", ":NvimTreeToggle<cr>", opts)
+  -- keymap("n", "<leader>e", ":NvimTreeFocus<cr>", opts)
+
+  -- Oil
+  vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
   -- Keymaps for better default experience
   -- See `:help vim.keymap.set()`
