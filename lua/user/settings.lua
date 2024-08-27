@@ -15,6 +15,7 @@ local function setup()
 
   vim.wo.wrap = false
 
+  vim.o.scroll = 4
   vim.opt.sidescroll = 4
   vim.opt.scrolloff = 8
   vim.opt.sidescrolloff = 8
