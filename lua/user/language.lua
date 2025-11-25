@@ -3,7 +3,7 @@ local function setup()
   -- See `:help nvim-treesitter`
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
+    ensure_installed = { 'zig', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -115,6 +115,17 @@ local function setup()
     end, '[W]orkspace [L]ist Folders')
   end
 
+  -- NEW SECTION
+  -- This has to match the name from nvim/lsp/*
+  vim.lsp.enable('lua_ls')
+
+  vim.api.nvim_create_autocmd('LSPAttach', {
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      on_attach(nil, args.buffer_id)
+    end
+  })
+
   -- Enable the following language servers
   --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
   --
@@ -136,10 +147,13 @@ local function setup()
     ols = {
       cmd = "ols",
     },
+    zls = {
+      cmd = "zls",
+      enable_build_on_save = true,
+      semantic_tokens = "partial",
+    },
+    emmet_language_server = {},
   }
-
-  -- Setup neovim lua configuration
-  require('neodev').setup()
 
   -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -152,14 +166,27 @@ local function setup()
     ensure_installed = vim.tbl_keys(servers),
   }
 
-  mason_lspconfig.setup_handlers {
-    function(server_name)
-      require('lspconfig')[server_name].setup {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        settings = servers[server_name],
-      }
-    end,
+  -- mason_lspconfig.setup_handlers {
+  --   function(server_name)
+  --     local options = {
+  --       capabilities = capabilities,
+  --       on_attach = on_attach,
+  --       settings = servers[server_name],
+  --     }
+  --
+  --     -- TODO: Fix this horrible mess! Figure out a better way to include "templ" in emmet filetypes...
+  --     if server_name == 'emmet_language_server' then
+  --       options["filetypes"] = { "templ", "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss",
+  --         "pug",
+  --         "typescriptreact" }
+  --     end
+  --
+  --     require('lspconfig')[server_name].setup(options)
+  --   end,
+  -- }
+
+  vim.g.markdown_fenced_languages = {
+    "ts=typescript"
   }
 
   -- nvim-cmp setup

@@ -121,12 +121,14 @@ return {
 
 	{
 		-- 'jacoborus/tender.vim',
-		'rainglow/vim',
+		-- 'rainglow/vim',
+		'rebelot/kanagawa.nvim',
 		lazy = false,
 		priority = 1000,
 		config = function()
 			-- vim.cmd.colorscheme('tender')
-			vim.cmd.colorscheme('service')
+			-- vim.cmd.colorscheme('service')
+			vim.cmd.colorscheme('kanagawa-wave')
 		end
 	},
 
