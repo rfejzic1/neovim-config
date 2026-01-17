@@ -39,6 +39,11 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
+	-- SQL
+	'tpope/vim-dadbod',
+	'kristijanhusak/vim-dadbod-ui',
+	'kristijanhusak/vim-dadbod-completion',
+
 	-- Terminal
 	{
 		'akinsho/toggleterm.nvim',

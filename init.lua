@@ -29,3 +29,5 @@ require("user/keymaps").setup()
 
 require("user/language").setup()
 
+require("user/sql").setup()
+
