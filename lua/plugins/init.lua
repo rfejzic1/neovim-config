@@ -128,7 +128,7 @@ return {
 		config = function()
 			-- vim.cmd.colorscheme('tender')
 			-- vim.cmd.colorscheme('service')
-			vim.cmd.colorscheme('kanagawa-wave')
+			vim.cmd.colorscheme('kanagawa-dragon')
 		end
 	},
 

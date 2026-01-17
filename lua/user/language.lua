@@ -152,6 +152,9 @@ local function setup()
       enable_build_on_save = true,
       semantic_tokens = "partial",
     },
+    gopls = {
+      cmd = "gopls",
+    },
     emmet_language_server = {},
   }
 
