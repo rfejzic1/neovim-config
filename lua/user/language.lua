@@ -1,7 +1,15 @@
 local function setup()
+  vim.filetype.add({
+    extension = {
+      qml = "qmljs",
+    },
+  })
+
+  vim.filetype.add({ extension = { templ = "templ" } })
+  
   -- [[ Configure Treesitter ]]
   -- See `:help nvim-treesitter`
-  require('nvim-treesitter.configs').setup {
+  require('nvim-treesitter').setup {
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 'zig', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
 
@@ -56,10 +64,10 @@ local function setup()
       swap = {
         enable = true,
         swap_next = {
-          ['<leader>a'] = '@parameter.inner',
+          ['<leader>p'] = '@parameter.inner',
         },
         swap_previous = {
-          ['<leader>A'] = '@parameter.inner',
+          ['<leader>P'] = '@parameter.inner',
         },
       },
     },
@@ -115,9 +123,17 @@ local function setup()
     end, '[W]orkspace [L]ist Folders')
   end
 
+  -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+  vim.lsp.config("*", {
+    capabilities = capabilities,
+  })
+
   -- NEW SECTION
   -- This has to match the name from nvim/lsp/*
-  vim.lsp.enable('lua_ls')
+  vim.lsp.enable({ 'lua_ls', 'pylsp', 'ols', 'svelte', 'gopls', 'emmet-ls', 'qmlls', 'templ'})
 
   vim.api.nvim_create_autocmd('LSPAttach', {
     callback = function(args)
@@ -125,68 +141,6 @@ local function setup()
       on_attach(nil, args.buffer_id)
     end
   })
-
-  -- Enable the following language servers
-  --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-  --
-  --  Add any additional override configuration in the following tables. They will be passed to
-  --  the `settings` field of the server config. You must look up that documentation yourself.
-  local servers = {
-    -- clangd = {},
-    -- gopls = {},
-    -- pyright = {},
-    -- rust_analyzer = {},
-    -- tsserver = {},
-
-    lua_ls = {
-      Lua = {
-        workspace = { checkThirdParty = false },
-        telemetry = { enable = false },
-      },
-    },
-    ols = {
-      cmd = "ols",
-    },
-    zls = {
-      cmd = "zls",
-      enable_build_on_save = true,
-      semantic_tokens = "partial",
-    },
-    gopls = {
-      cmd = "gopls",
-    },
-    emmet_language_server = {},
-  }
-
-  -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-  -- Ensure the servers above are installed
-  local mason_lspconfig = require 'mason-lspconfig'
-
-  mason_lspconfig.setup {
-    ensure_installed = vim.tbl_keys(servers),
-  }
-
-  -- mason_lspconfig.setup_handlers {
-  --   function(server_name)
-  --     local options = {
-  --       capabilities = capabilities,
-  --       on_attach = on_attach,
-  --       settings = servers[server_name],
-  --     }
-  --
-  --     -- TODO: Fix this horrible mess! Figure out a better way to include "templ" in emmet filetypes...
-  --     if server_name == 'emmet_language_server' then
-  --       options["filetypes"] = { "templ", "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss",
-  --         "pug",
-  --         "typescriptreact" }
-  --     end
-  --
-  --     require('lspconfig')[server_name].setup(options)
-  --   end,
-  -- }
 
   vim.g.markdown_fenced_languages = {
     "ts=typescript"
