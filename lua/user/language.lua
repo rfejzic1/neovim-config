@@ -131,9 +131,24 @@ local function setup()
     capabilities = capabilities,
   })
 
+  vim.lsp.config("gopls", {
+    capabilities = {
+      workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+        }
+      }
+    },
+    settings = {
+      gopls = {
+        semanticTokens = true,
+      }
+    }
+  })
+
   -- NEW SECTION
   -- This has to match the name from nvim/lsp/*
-  vim.lsp.enable({ 'lua_ls', 'pylsp', 'ols', 'svelte', 'gopls', 'emmet-ls', 'qmlls', 'templ'})
+  vim.lsp.enable({ 'lua_ls', 'pylsp', 'ols', 'svelte', 'gopls', 'emmet-ls', 'qmlls', 'templ', 'vscode-html-language-server'})
 
   vim.api.nvim_create_autocmd('LSPAttach', {
     callback = function(args)

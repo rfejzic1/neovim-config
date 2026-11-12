@@ -34,6 +34,9 @@ return {
 			keymaps = {},
 			view_options = {
 				show_hidden = true,
+				is_hidden_file = function(name, bufnr)
+				  return vim.startswith(name, ".") or vim.endswith(name, "_templ.go")
+				end,
 			},
 		},
 		dependencies = { "nvim-tree/nvim-web-devicons" },
